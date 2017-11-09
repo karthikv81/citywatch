@@ -33,8 +33,14 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
+	
 // if everything is ok, try to upload file
 } else {
+//Check if the directory already exists.
+	if(!is_dir($target_dir)){
+	    //Directory does not exist, so lets create it.
+	    mkdir($target_dir, 0755);
+	}
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
