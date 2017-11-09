@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello</title>
+    </head>
+    <body>
+        <div class="header">
+			<span></span>City Watch<span><img src="images/logo.png" /></span>
+		</div>
+        <div id="body">
+            <div id="notification" class="hide">Loading Please wait...</div>
+            <div id="login" class="page hide">
+                <label>Username</label><input type="text" />
+                <label>Password</label><input type="text" />
+                <button onclick="doLogin();">Login</button>
+            </div>
+            <div id="main" class="page hide">
+
+            </div>
+            <div id="maps" class="page hide">
+
+            </div>
+            <div id="dashboard" class="page hide">
+
+            </div>
+            <div id="aboutus" class="page hide">
+
+            </div>
+        </div>
+        <div class="footer">This is footer area ...</div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqdjxyZjfsGYqUUWDUZ9fA2m2JvbtPYag"></script>
+        <script type="text/javascript" src="scripts/ajax.js"></script>
+        <script type="text/javascript" src="scripts/dashboard.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/maps.js"></script>
+        <script type="text/javascript" src="scripts/login.js"></script>
+        <script type="text/javascript" src="scripts/reports.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+    </body>
+</html>
