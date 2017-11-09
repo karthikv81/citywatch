@@ -1,0 +1,31 @@
+PUT /bangalore
+
+PUT /bangalore/issue/_mapping 
+		{
+			"issue": {
+				"properties": {
+					"geoLocation": {
+						"type": "geo_point"						
+					  
+					 },
+					 "timestamp": {
+					   "type": "date",
+					   "format": "epoch_millis"
+					 }
+					}
+				}
+			}
+		}
+		
+#sample inserts
+
+PUT /bangalore/issue/1
+{
+  "title":"Hard bump",
+   "category":"Pothole",
+   "geoLocation": "12.9724, 77.5806",
+   "timestamp": 1510250029,
+   "imageUrl" : "no oper",
+   "userName"  : "myname",
+   "status" : "reported"
+}
