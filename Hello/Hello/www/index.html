@@ -15,10 +15,14 @@
             <div id="login" class="page hide">
                 <label>Username</label><input type="text" />
                 <label>Password</label><input type="text" />
-                <button onclick="doLogin();">Login</button>
+                <button id="login_submit">Login</button>
             </div>
             <div id="main" class="page hide">
-
+                <ul id="main_options">
+                    <li id="maps">Report Issue</li>
+                    <li id="dash">Dashboard</li>
+                    <li id="about">About Us</li>
+                </ul>
             </div>
             <div id="maps" class="page hide">
 
@@ -39,5 +43,9 @@
         <script type="text/javascript" src="scripts/login.js"></script>
         <script type="text/javascript" src="scripts/reports.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript">
+            var citywatch = new CityWatch();
+            citywatch.onLoad();
+        </script>
     </body>
 </html>
