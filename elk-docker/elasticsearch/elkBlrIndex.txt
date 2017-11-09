@@ -23,9 +23,32 @@ PUT /bangalore/issue/1
 {
   "title":"Hard bump",
    "category":"Pothole",
-   "geoLocation": "12.9724, 77.5806",
    "timestamp": 1510250029,
-   "imageUrl" : "no oper",
+   "geoLocation": "12.9724, 77.5806",
+   "imageUrl" : "no oper", 
    "userName"  : "myname",
    "status" : "reported"
 }
+
+# GET CALL for maps (tested for 10m)
+GET /bangalore/issue/_search
+{
+    "query": {
+        "bool" : {
+			"must" : {
+				"match_all" : {}
+			},
+	"filter" : {
+     "geo_distance" : {
+         "distance" : "100km",
+         "geoLocation" : {
+  "lat" : 12,
+  "lon" : 77
+         }
+     }
+ }
+        }
+    }
+} 
+
+GET /bangalore/issue/_search?q=category:Pothole
