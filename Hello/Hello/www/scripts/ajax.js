@@ -1,26 +1,41 @@
-﻿var Ajax = function (url, options, timeout) {
+﻿function ajaxPut(uri, data) {
+    return Ajax("PUT", uri, data);
+}
+function ajaxGet(uri) {
+    return Ajax("GET", uri);
+}
+
+var Users = [
+    "Keshab.Panda@lnttechservices.com",
+    "Karthik.Venkateshwaran@Meghdoot.inc",
+    "Bill.Gates@Microsoft.com",
+    "Steve.Jobs@OutOfThisWorld.com",
+];
+var Images = [
+    "",
+    ""
+];
+
+var Ajax = function (method, uri, data, timeout) {
     options = {
-        method: 'GET',
+        method: method,
         async: true,
         type: 'json',
         user: null,
-        password: null
+        password: null,
+        data: JSON.stringify(data)
     };
-
+    
     var deferred = Q.defer();
 
     var request = new XMLHttpRequest();
-
     request.timeout = timeout || 0;
-
     request.onreadystatechange = function () {
-
         if (request.readyState !== 4) {
             return;
         }
-
         switch (true) {
-            case[0, 200, 304].indexOf(request.status) !== -1:
+            case[0, 200, 201].indexOf(request.status) !== -1:
                 switch (options.type) {
                     case 'json':
                         try {
@@ -37,13 +52,10 @@
             default:
                 deferred.reject(request.responseText, request.status);
         }
-
     };
-
-    request.open(options.method, url, options.async, options.user, options.password);
-
+    request.open(options.method, "http://35.196.140.124:9200/bangalore/issue/" + uri, options.async, options.user, options.password);
+    request.setRequestHeader("content-type", "application/json");
     options.data ? request.send(options.data) : request.send();
-
     return deferred.promise;
 }; 
 
