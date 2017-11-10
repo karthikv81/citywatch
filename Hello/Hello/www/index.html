@@ -19,13 +19,14 @@
             </div>
             <div id="main" class="page hide">
                 <ul id="main_options">
-                    <li id="maps">Report Issue</li>
-                    <li id="dash">Dashboard</li>
-                    <li id="about">About Us</li>
+                    <li id="mapslnk">Report Issue</li>
+                    <li id="dashlnk">Dashboard</li>
+                    <li id="aboutlnk">About Us</li>
                 </ul>
             </div>
             <div id="maps" class="page hide">
-
+                <div id="maps_notification"></div>
+                <div id="maps_canvas"></div>
             </div>
             <div id="dashboard" class="page hide">
 
@@ -35,6 +36,7 @@
             </div>
         </div>
         <div class="footer">This is footer area ...</div>
+        <script type="text/javascript" src="cordova.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqdjxyZjfsGYqUUWDUZ9fA2m2JvbtPYag"></script>
         <script type="text/javascript" src="scripts/ajax.js"></script>
         <script type="text/javascript" src="scripts/dashboard.js"></script>
@@ -44,8 +46,7 @@
         <script type="text/javascript" src="scripts/reports.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
         <script type="text/javascript">
-            var citywatch = new CityWatch();
-            citywatch.onLoad();
+            
         </script>
     </body>
 </html>

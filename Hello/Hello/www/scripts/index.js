@@ -1,9 +1,6 @@
-﻿document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-var map;
+﻿document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
-    // Handle the Cordova pause and resume events
-    document.addEventListener('pause', onPause.bind(this), false);
-    document.addEventListener('resume', onResume.bind(this), false);
+    new CityWatch().onLoad();
 };
 
 var LoginApp = new Login();
@@ -13,14 +10,28 @@ var DashApp = new Dashboard();
 var ReportsApp = new Reports();
 
 function CityWatch() {
-
     var currentPage = LoginApp;
 
     this.onLoad = function () {
         currentPage.show();
     }
-    document.addEventListener("keydown", function () {
-
+    document.addEventListener("backbutton", function (event) {
+        alert(event.type);
+    }, false);
+    document.addEventListener("menubutton", function (event) {
+        alert(event.type);
+    }, false);
+    document.addEventListener("volumeupbutton", function (event) {
+        alert(event.type);
+    }, false);
+    document.addEventListener("volumedownbutton", function (event) {
+        alert(event.type);
+    }, false);
+    document.addEventListener('pause', function(event){
+        alert(event.type);
+    }, false);
+    document.addEventListener('resume', function(event){
+        alert(event.type);
     }, false);
 }
 

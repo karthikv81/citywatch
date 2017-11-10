@@ -15,17 +15,17 @@
                 alert("clicked on : " + target.id);
                 this.hide();
                 switch (target.id) {
-                    case "maps":
+                    case "mapslnk":
                         MapsApp.show();
                         break;
-                    case "dash":
+                    case "dashlnk":
                         DashApp.show();
                         break;
-                    case "about":
+                    case "aboutlnk":
                         break;
                     default:
                 }
-            };
+            }.bind(this);
         }
     }
     this.handleKey = function () {
