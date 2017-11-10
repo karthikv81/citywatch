@@ -35,7 +35,7 @@
             map.panTo(event.latLng);
             var userSelection = confirm("Do you want to upload the photo of the probem?");
             if (userSelection) {
-                navigator.camera.getPicture(cameraSuccess.bind(this), cameraError.bind(this), {});
+                navigator.camera.getPicture(cameraSuccess.bind(this), cameraError.bind(this), { destinationType: Camera.DestinationType.FILE_URI });
             }
             function onMarkerClick(event) {
                 var infowindow = new google.maps.InfoWindow({
@@ -74,25 +74,32 @@
     this.hideNotification = function () {
         Utils.addClass(_notify, 'hide');
     };
-}
+    function FileUpload(fileURL) {
+        var win = function (r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+        }
 
-function FileUpload(file) {
-    var data = new FormData();
-    data.append("fileToUpload", file);
+        var fail = function (error) {
+            alert("An error has occurred: Code = " + error.code);
+            console.log("upload error source " + error.source);
+            console.log("upload error target " + error.target);
+        }
 
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
+        var options = new FileUploadOptions();
+        options.fileKey = "fileToUpload";
+        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpg";
 
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-        console.log(this.responseText);
-      }
-    });
+        var params = {};
+        params.value1 = "test";
+        params.value2 = "param";
 
-    xhr.open("POST", "http://35.196.140.124/upload.php");
-    xhr.setRequestHeader("cache-control", "no-cache");
+        options.params = params;
 
-    xhr.send(data);
+        var ft = new FileTransfer();
+        ft.upload(fileURL, encodeURI("http://35.196.140.124/upload.php"), win, fail, options);    }
 }
 
 // Success callback for watching your changing position

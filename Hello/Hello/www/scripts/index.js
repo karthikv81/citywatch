@@ -3,11 +3,12 @@ function onDeviceReady() {
     new CityWatch().onLoad();
 };
 
-var LoginApp = new Login();
-var MainApp = new Main();
-var MapsApp = new Maps();
-var DashApp = new Dashboard();
 var ReportsApp = new Reports();
+var DashApp = new Dashboard();
+var MapsApp = new Maps();
+var MainApp = new Main();
+var LoginApp = new Login();
+
 
 function CityWatch() {
     var currentPage = LoginApp;
