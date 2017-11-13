@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Enter names in the fields, then click "Submit" to submit the form:</p>
+
+<form>
+ <label for="_id">ID</label><br /> 
+ <input name="_id" type="text" value="" /> <br /> 
+ <label for="_location">Location</label><br />
+  <input name="_location" type="text" value="Lat,Lon" /> <br /> 
+   <label for="_timestamp">Timestamp</label><br />
+    <input name="_timestamp" type="text" 
+     value="epoch in millis" /> <br /> 
+      <label for="_resolution">Resolution Time</label><br /> 
+       <input name="_resolution" type="text" value="epoch in millis" />
+
+         <input type="button" onclick="myFunction()" value="Submit">
+	 </form>
+
+	 <script>
+	 function myFunction() {
+	     var xhttp = new XMLHttpRequest();
+	     	//var url = "https://hookb.in/Zn842WXY/" + "?bangalore/issue/AV-ii9_OgzXoJXQsq8eQ/_update";
+		    //var url = "http://192.168.99.100:9200/bangalore/issue/AV-ii9_OgzXoJXQsq8eQ/_update";
+		    	//var url = "http://35.196.140.124:9200/bangalore/issue/1510247508026/_update";
+				var url = "http://35.196.140.124:9200/bangalore/issue/1510247508026";
+					//xhttp.open("POST", "http://35.196.140.124:9200" + "/bangalore/issue/1510247508026/_update", true);
+					    xhttp.setRequestHeader("Content-type", "application/json");
+					    	xhttp.open("POST", url, true);
+							
+							    
+							    	var data = JSON.stringify({"doc": {"status":"rejected", "ClosedTimestamp": 1510250029010}});
+									
+										xhttp.send(data);
+											
+											    var response = JSON.parse(xhttp.responseText);
+
+											    }
+											    </script>
+
+											    </body>
+											    </html>
+
+
+
+
